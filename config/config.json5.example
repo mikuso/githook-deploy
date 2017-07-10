@@ -1,0 +1,10 @@
+{
+    listenPort: 3056,                       // http port to listen on
+    hooks: [
+        {
+            secret: "123456789",            // github secret
+            repo: "mikuso/githook-deploy",  // user/repo full name
+            branch: "master",               // branch name
+        }
+    ]
+}
