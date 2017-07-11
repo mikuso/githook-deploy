@@ -92,7 +92,7 @@ app.post('*', async (req, res) => {
             throw Error('Bad signature');
         }
 
-        await queueDeploy(js.repository.name);
+        await queueDeploy(repo);
 
         res.status(204).send();
     } catch (err) {
