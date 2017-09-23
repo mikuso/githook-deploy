@@ -47,7 +47,8 @@ const deployQueue = new PromiseQueue(1, Infinity);
 async function queueDeploy(hook) {
     return deployQueue.add(async () => {
         console.log(chalk.yellow.bold(`Running deploy hook:`), hook);
-        const deployScript = path.resolve(__dirname, './config', `${hook}.cmd`);
+        const shellExt = /^win/.test(process.platform) ? '.cmd' : '.sh';
+        const deployScript = path.resolve(__dirname, './config', `${hook}${shellExt}`);
         console.log(deployScript);
         return await new Promise((resolve, reject) => {
             let cp = execa(deployScript, [], {detached: true});
